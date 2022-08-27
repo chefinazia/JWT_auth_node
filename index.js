@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const router  = express.Router();
 const userRoutes = require('./routes/userRoutes');
+const protectedRoute = require('./routes/protectedRoute');
 const app = express()
 
 dotenv.config()
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/user",userRoutes)
+app.use("/protected",protectedRoute)
 
 var port = process.env.PORT || 3001;
 
