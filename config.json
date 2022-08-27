@@ -1,0 +1,6 @@
+{
+    "secret": "ngIndia rocks!",
+    "audience": "jwt_auth_node",
+    "issuer": "https://rachit.com"
+  }
+  
