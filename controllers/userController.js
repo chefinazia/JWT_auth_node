@@ -44,7 +44,7 @@ exports.createUser = (req,res)=> {
     }
 
     if (_.find(usersArray, userData.userSearch)) {
-    return res.status(400).send("A user with that username already exists");
+    return res.status(400).send("user already exists");
     }
 
     var profile = _.pick(req.body, userData.type, 'password', 'extra');
