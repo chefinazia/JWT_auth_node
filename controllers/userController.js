@@ -83,3 +83,28 @@ exports.getUserData = (req) =>{
       userSearch: userSearch
     }
 }
+
+exports.signInUser  = (req,res) => {
+    let params = req.body
+    let {username,password} = params
+    let userData = this.getUserData(req);
+
+    if (!username || !password) {
+        return res.status(400).send("username and password both are required");
+    }
+
+    var user = _.find(usersArray, userData.userSearch);
+    
+    if (!user) {
+        return res.status(401).send("The username or password does not match");
+    }
+
+    if (user.password !== password) {
+        return res.status(401).send("The username or password don't match");
+    }
+
+    res.status(201).send({
+        id_token: createIdToken(user),
+        access_token: createAccessToken()
+    });
+}
